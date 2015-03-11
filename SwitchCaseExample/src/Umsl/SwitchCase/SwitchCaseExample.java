@@ -35,7 +35,6 @@ public class SwitchCaseExample
 		    }
 	}
 	
-	return(0);
     }
 
 }
