@@ -86,55 +86,55 @@ public class VariousMethods
     public float minMaxAvg()
     {
         int num;
-        int newnum;
-        float avg; 
-        int count = 0; 
-        int total = 0; 
-        int min; 
-        int max;
-        Scanner in = new Scanner(System.in);
-         
-        System.out.print("Enter a whole number, and -1 to quit: ");
-        num = in.nextInt(); 
-        count++;
-        total += num;
-        max = num;
-        min = num;
-        System.out.print("Enter a whole number, and -1 to quit: ");
-        newnum = in.nextInt();
+        int min = 0;
+        int max = 0;
+        int avg;
+        int counter = 0;
+        int total = 0;
 
-        while (newnum != -1)
-        { 
-            count++;
-            total += newnum;
-            
-            if (newnum > max)
+        System.out.println("Please enter a list of numbers separated by spaces");
+        Scanner in = new Scanner(System.in);
+        String myline = in.nextLine();
+        StringTokenizer mytokenizer = new StringTokenizer(myline);
+
+        while(mytokenizer.hasMoreTokens())
+        {
+            num = Integer.parseInt(mytokenizer.nextToken());
+            counter++;
+
+            if (counter == 1)
             {
-                max = newnum;
-                System.out.print("Enter a whole number, and -1 to quit: ");
-                newnum = in.nextInt(); 
+                min = num;
+                max = num;
+                total += num;
             }
-            else if (newnum < min)
-            {
-                min = newnum;
-                System.out.print("Enter a whole number, and -1 to quit: ");
-                newnum = in.nextInt(); 
-            }
-            else
-            {
-                System.out.print("Enter a whole number, and -1 to quit: ");
-                newnum = in.nextInt(); 
-            }
-        } 
-        avg = total / count;
-        System.out.println("You keyed in " + count + " numbers.");
-        System.out.println("The average  is: " + avg);
+            else if (counter > 1)
+                if (num >= max)
+                {
+                    max = num;
+                    total += num;
+                }
+                else if (num <= min)
+                {
+                    min = num; 
+                    total += num;
+                }
+                else
+                {
+                    total += num;
+                }
+        }
+        avg = (total/counter);
+        System.out.println("You keyed in " + counter + " numbers.");
+        System.out.println("The total is " + total);
+        System.out.println("The average is " + avg);
         System.out.println("The minimum number is " + min);
         System.out.println("The maximum number is " + max);
         return(min);
     }
     
     float myGrader()
+            
     {
         int gradeA = 0;
         int gradeB = 0;
