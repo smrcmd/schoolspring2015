@@ -86,13 +86,13 @@ public class VariousMethods
     
     public float minMaxAvg()
     {
-        int num = 0;
-        int newnum = 0;
-        float avg = 0; 
+        int num;
+        int newnum;
+        float avg; 
         int count = 0; 
         int total = 0; 
-        int min = 0; 
-        int max = 0;
+        int min; 
+        int max;
         Scanner in = new Scanner(System.in);
          
         System.out.print("Enter a whole number, and -1 to quit: ");
