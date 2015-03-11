@@ -49,7 +49,6 @@ public class VariousMethods
     {
         int twelves = 0;
         int counter = 0;
-        boolean instance;
         int firstInstance=0;
         int lastInstance=0;
         
