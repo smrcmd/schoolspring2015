@@ -9,7 +9,7 @@ import java.util.Scanner;
  *
  * @author Sophie
  */
-public class EmployeeType 
+public class RunBudget 
 {
 
     public static void main(String[] args)
