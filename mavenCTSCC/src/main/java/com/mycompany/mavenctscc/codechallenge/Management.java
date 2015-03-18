@@ -14,21 +14,16 @@ import java.util.Scanner;
 public class Management {
     public int Management()
     {
-        int managertotal = 0;
-        String response = null;
-        System.out.println("Do you currently manage any other managers? 'yes' or 'no'?");
+        int managers = 0;
+        System.out.println("How many managers do you currently manage?");
         Scanner sc = new Scanner(System.in);
-        response = sc.next();
+        managers = sc.nextInt();
         int totalBudget = 0;
         
-        if (response.equalsIgnoreCase("yes")) // do in a seperate class
+        if (managers > 0) // do in a seperate class
         {
-            System.out.println("How many managers are on this team?");
-            Scanner mgr = new Scanner(System.in);
-            managertotal = mgr.nextInt();
-            
             int mgrcount = 1;
-            while(mgrcount <= managertotal)
+            while(mgrcount <= managers)
             {
                 System.out.println("For team " + mgrcount + ":");
                 NumberOfEmployees budget = new NumberOfEmployees();
@@ -36,7 +31,7 @@ public class Management {
                 totalBudget += (budget.NumberOfEmployees());
             }
             
-            System.out.println("For YOUR team:");
+            System.out.println("For your team:");
             NumberOfEmployees budget = new NumberOfEmployees();
             totalBudget += (budget.NumberOfEmployees());
         }
