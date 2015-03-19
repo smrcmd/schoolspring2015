@@ -15,6 +15,7 @@ public class Asg2Menu {
     {
         int selection;
         Asg2 asg2 = new Asg2();
+        asg2.dateCalc();
         System.out.println("Please enter the type of transaction you wish to make.");
         Scanner in = new Scanner(System.in);
         
@@ -25,6 +26,7 @@ public class Asg2Menu {
             System.out.println("3) Check Balance");
             System.out.println("4) Exit");
             selection = in.nextInt();
+            
 
         if(selection == 1)
         {
