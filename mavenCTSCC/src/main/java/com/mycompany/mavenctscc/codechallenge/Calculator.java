@@ -11,13 +11,12 @@ package com.mycompany.mavenctscc.codechallenge;
  */
 public class Calculator extends NumberOfEmployees {
     
-    public int Calculator()
+    public int TeamCalculator()
     {
         Managers mgr = new Managers();
         managers = mgr.Managers();
         int total = 0;
-        if (managers > 0) 
-            
+        if (managers > 0 && layers < 2) 
         {
             int mgrcount = 1;
             while(mgrcount <= managers)
@@ -33,6 +32,11 @@ public class Calculator extends NumberOfEmployees {
             NumberOfEmployees budget = new NumberOfEmployees();
             total += (budget.NumberOfEmployees());
         }
+        /*else if (managers > 0 && layers >=2)
+        {
+            mgr.Reports();
+            mgr.ReportsCalc();
+        } */
         else
         {
             NumberOfEmployees budget = new NumberOfEmployees();

@@ -20,6 +20,8 @@ public class NumberOfEmployees {
     int mgrBudget = 300;
     int totalBudget;
     int managers;
+    int layers;
+    String reports;
     
     public int NumberOfEmployees ()
     {
