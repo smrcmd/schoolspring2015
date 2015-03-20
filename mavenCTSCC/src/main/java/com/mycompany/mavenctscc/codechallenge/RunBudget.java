@@ -13,7 +13,7 @@ public class RunBudget {
     
     public static void main(String[] args)
     {
-        Management mgr = new Management();
-        int Management = mgr.Management();
+        Calculator mgr = new Calculator();
+        int Calculator = mgr.Calculator();
     }
 }

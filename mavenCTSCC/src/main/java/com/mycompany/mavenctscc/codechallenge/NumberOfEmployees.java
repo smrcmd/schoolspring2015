@@ -19,8 +19,9 @@ public class NumberOfEmployees {
     int devBudget = 1000;
     int mgrBudget = 300;
     int totalBudget;
+    int managers;
     
-    public int NumberOfEmployees()
+    public int NumberOfEmployees ()
     {
         System.out.println("How many QA Testers are on this team?");
         Scanner qat = new Scanner(System.in);

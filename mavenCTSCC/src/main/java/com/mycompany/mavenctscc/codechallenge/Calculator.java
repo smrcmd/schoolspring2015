@@ -5,42 +5,40 @@
  */
 package com.mycompany.mavenctscc.codechallenge;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Sophie
  */
-public class Management {
-    public int Management()
+public class Calculator extends NumberOfEmployees {
+    
+    public int Calculator()
     {
-        int managers = 0;
-        System.out.println("How many managers do you currently manage?");
-        Scanner sc = new Scanner(System.in);
-        managers = sc.nextInt();
-        int totalBudget = 0;
-        
-        if (managers > 0) // do in a seperate class
+        Managers mgr = new Managers();
+        managers = mgr.Managers();
+        int total = 0;
+        if (managers > 0) 
+            
         {
             int mgrcount = 1;
             while(mgrcount <= managers)
+                
             {
                 System.out.println("For team " + mgrcount + ":");
                 NumberOfEmployees budget = new NumberOfEmployees();
                 mgrcount++;
-                totalBudget += (budget.NumberOfEmployees());
+                total += (budget.NumberOfEmployees());
             }
             
             System.out.println("For your team:");
             NumberOfEmployees budget = new NumberOfEmployees();
-            totalBudget += (budget.NumberOfEmployees());
+            total += (budget.NumberOfEmployees());
         }
         else
         {
             NumberOfEmployees budget = new NumberOfEmployees();
-            totalBudget += (budget.NumberOfEmployees());
+            total += (budget.NumberOfEmployees());
         }
-      System.out.println("The total budget needed for this team is " + totalBudget);
-      return totalBudget; 
+        System.out.println("The total budget needed for this team is " + total);
+        return total; 
     }
 }
