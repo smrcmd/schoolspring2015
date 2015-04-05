@@ -15,9 +15,8 @@ public class Asg2
 {
     private double balance = 100;
     private double interest = 1.05;
-    private double newBalInt;
+    public double newBalInt;
     private int secondDate; 
-    
     
     public void currentDate()
     {
@@ -32,40 +31,46 @@ public class Asg2
         System.out.println("Today's date is " + month + "/" + day + "/" + year);
     }
     
-    public void calcInterest()
+    /*public double calcInterest(double date1, double date2)
     {
+        double dateDiff = 0;
+        dateDiff = date2 - date1;
+        interest = dateDiff * interest;
         newBalInt = balance * interest;
         System.out.println("Your new balance with interest is " + newBalInt + ".");
+        return (newBalInt);
     }
+    */
     
-    public double deposit()
+    public double deposit(double balInt)
     {
         double depositAMT;
+        System.out.println("Your available balance is " + balInt + ".");
         System.out.println("Please enter amount to deposit. Ex: 200.05");
         Scanner in = new Scanner(System.in);
         depositAMT = in.nextDouble();
-        balance = balance + depositAMT;
+        balance = balInt + depositAMT;
         System.out.println("Your deposit amount was " + depositAMT + ".");
         System.out.println("Your new balance is " + balance);
-        return(depositAMT);
+        return(balance);
     }
     
-    public double withdraw()
+    public double withdraw(double balInt)
     {
         double withdrawAMT;
-        System.out.println("Your available balance is " + balance + ". Please enter amount to withdraw. Ex: 200.05");
+        System.out.println("Your available balance is " + balInt + ". Please enter amount to withdraw. Ex: 200.05");
         Scanner in = new Scanner(System.in);
         withdrawAMT = in.nextDouble();
-        balance = balance - withdrawAMT;
         System.out.println("Your withdrawal amount is " + withdrawAMT + ".");
+        balance = balInt - withdrawAMT;
         System.out.println("Your new balance is " + balance);
-        return(withdrawAMT);
+        return(balance);
     }
     
-    public double checkBalance()
+    public double checkBalance(double balInt)
     {
-        System.out.println("Your available balance is " + balance*interest + ".");
-        return(newBalInt);
+        System.out.println("Your available balance is " + balInt + ".");
+        return(balInt);
     } 
     
     public double julianConversion()
@@ -74,7 +79,7 @@ public class Asg2
         int day = 0;
         int year = 0;
         int julianMonth = 0;
-        int julianCal = 0;
+        int julianDate1 = 0;
         int counter = 0;
         int num;
         System.out.println("Please enter a date in the format of 5/24/2015");
@@ -159,9 +164,9 @@ public class Asg2
             }
         }
         
-        julianCal = julianMonth + day;
-        System.out.println("Julian Calendar days is " + julianCal + ".");
-        return(julianCal);
+        julianDate1 = julianMonth + day;
+        //System.out.println("Julian Calendar days is " + julianDate1 + ".");
+        return(julianDate1);
         
     }
 }

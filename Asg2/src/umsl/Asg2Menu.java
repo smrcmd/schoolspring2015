@@ -9,14 +9,17 @@ import java.util.Scanner;
  *
  * @author Sophie
  */
-public class Asg2Menu {
+public class Asg2Menu{
+
     
-    public static void main(String args[])
+    public void Asg2Menu()
     {
         int selection;
-        Asg2 asg2 = new Asg2();
-        asg2.currentDate();
-        asg2.julianConversion();
+        Asg2 date1 = new Asg2();
+        //date1.julianConversion();
+        Asg2 date2 = new Asg2();
+        //date2.julianConversion();
+        InterestCalc intCalc = new InterestCalc();
         System.out.println("Please enter the type of transaction you wish to make.");
         Scanner in = new Scanner(System.in);
         
@@ -31,15 +34,18 @@ public class Asg2Menu {
 
         if(selection == 1)
         {
-            double tempDeposit = asg2.deposit();
+            double balInt = intCalc.InterestCalc(date1.julianConversion(), date2.julianConversion());
+            double tempDeposit = date2.deposit(balInt);
         }
         else if (selection == 2)
         {
-            double tempWithdraw = asg2.withdraw();
+            double balInt = intCalc.InterestCalc(date1.julianConversion(), date2.julianConversion());
+            double tempWithdraw = date2.withdraw(balInt);
         }
         else if (selection == 3)
         {
-            double tempCheckBalance = asg2.checkBalance();
+            double balInt = intCalc.InterestCalc(date1.julianConversion(), date2.julianConversion());
+            double tempCheckBalance = date2.checkBalance(balInt);
         }
         }while(selection != 4);
         
