@@ -40,10 +40,12 @@ public class Asg2Menu{
         if(selection == 1)
         {
             double tempDeposit = date2.deposit(balInt);
+            balInt = tempDeposit;
         }
         else if (selection == 2)
         {
             double tempWithdraw = date2.withdraw(balInt);
+            balInt = tempWithdraw;
         }
         else if (selection == 3)
         {
