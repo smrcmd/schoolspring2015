@@ -15,7 +15,8 @@ public class Asg2Menu {
     {
         int selection;
         Asg2 asg2 = new Asg2();
-        asg2.dateCalc();
+        asg2.currentDate();
+        asg2.julianConversion();
         System.out.println("Please enter the type of transaction you wish to make.");
         Scanner in = new Scanner(System.in);
         

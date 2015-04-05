@@ -6,17 +6,20 @@
 package umsl;
 import java.util.Scanner;
 import java.util.GregorianCalendar;
+import java.util.StringTokenizer;
 /**
  *
  * @author Sophie
  */
 public class Asg2 
 {
-    double balance = 100;
-    double interest = 1.05;
-    double newBalInt;
+    private double balance = 100;
+    private double interest = 1.05;
+    private double newBalInt;
+    private int secondDate; 
     
-    public void dateCalc()
+    
+    public void currentDate()
     {
         String month="";
         String day="";
@@ -26,7 +29,7 @@ public class Asg2
         month=String.valueOf(gregorianCalendar.get(GregorianCalendar.MONTH));            
         day=String.valueOf(gregorianCalendar.get(GregorianCalendar.DAY_OF_MONTH));
         year=String.valueOf(gregorianCalendar.get(GregorianCalendar.YEAR));
-        System.out.println(month + "/" + day + "/" + year);
+        System.out.println("Today's date is " + month + "/" + day + "/" + year);
     }
     
     public void calcInterest()
@@ -43,6 +46,7 @@ public class Asg2
         depositAMT = in.nextDouble();
         balance = balance + depositAMT;
         System.out.println("Your deposit amount was " + depositAMT + ".");
+        System.out.println("Your new balance is " + balance);
         return(depositAMT);
     }
     
@@ -54,6 +58,7 @@ public class Asg2
         withdrawAMT = in.nextDouble();
         balance = balance - withdrawAMT;
         System.out.println("Your withdrawal amount is " + withdrawAMT + ".");
+        System.out.println("Your new balance is " + balance);
         return(withdrawAMT);
     }
     
@@ -62,5 +67,101 @@ public class Asg2
         System.out.println("Your available balance is " + balance*interest + ".");
         return(newBalInt);
     } 
+    
+    public double julianConversion()
+    {
+        int month = 0;
+        int day = 0;
+        int year = 0;
+        int julianMonth = 0;
+        int julianCal = 0;
+        int counter = 0;
+        int num;
+        System.out.println("Please enter a date in the format of 5/24/2015");
+        Scanner in = new Scanner(System.in);
+        String dateInput = in.nextLine();
+        StringTokenizer mytokenizer = new StringTokenizer(dateInput, "/");
 
+        while(mytokenizer.hasMoreTokens())
+        {
+            num = Integer.parseInt(mytokenizer.nextToken());
+            counter++;
+            if (counter == 1)
+            {
+                month = num;
+            }
+            else if (counter == 2)
+            {
+                day = num;
+            }
+            else
+            {
+                year = num;
+            }
+        }
+        
+        switch (month)
+        {
+            case 2:
+            {
+                julianMonth = 31;
+                break;
+            }
+            case 3:
+            {
+                julianMonth = 59;
+                break;
+            }
+            case 4:
+            {
+                julianMonth = 90;
+                break;
+            }
+            case 5:
+            {
+                julianMonth = 120;
+                break;
+            }
+            case 6:
+            {
+                julianMonth = 151;
+                break;
+            }
+            case 7:
+            {
+                julianMonth = 181; 
+                break;
+            }
+            case 8:
+            {
+                julianMonth = 212;
+                break;
+            }
+            case 9: 
+            {
+                julianMonth = 243;
+                break;
+            }
+            case 10:
+            {
+                julianMonth = 273;
+                break;
+            }
+            case 11:
+            {
+                julianMonth = 304;
+                break;
+            }
+            case 12:
+            {
+                julianMonth = 334;
+                break;
+            }
+        }
+        
+        julianCal = julianMonth + day;
+        System.out.println("Julian Calendar days is " + julianCal + ".");
+        return(julianCal);
+        
+    }
 }
