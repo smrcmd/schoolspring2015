@@ -16,9 +16,9 @@ public class Asg2
     private double balance = 100;
     private double interest = 1.05;
     public double newBalInt;
-    private int secondDate; 
+
     
-    public void currentDate()
+    /*public void currentDate()
     {
         String month="";
         String day="";
@@ -30,6 +30,7 @@ public class Asg2
         year=String.valueOf(gregorianCalendar.get(GregorianCalendar.YEAR));
         System.out.println("Today's date is " + month + "/" + day + "/" + year);
     }
+    */
     
     /*public double calcInterest(double date1, double date2)
     {
@@ -165,7 +166,6 @@ public class Asg2
         }
         
         julianDate1 = julianMonth + day;
-        //System.out.println("Julian Calendar days is " + julianDate1 + ".");
         return(julianDate1);
         
     }

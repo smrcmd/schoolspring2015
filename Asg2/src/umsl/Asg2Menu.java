@@ -16,37 +16,40 @@ public class Asg2Menu{
     {
         int selection;
         Asg2 date1 = new Asg2();
-        //date1.julianConversion();
         Asg2 date2 = new Asg2();
-        //date2.julianConversion();
         InterestCalc intCalc = new InterestCalc();
-        System.out.println("Please enter the type of transaction you wish to make.");
-        Scanner in = new Scanner(System.in);
+        double balInt = intCalc.InterestCalc(date1.julianConversion(), date2.julianConversion());
+        if (balInt < 0)
+        {
+            System.out.println("You did not enter valid dates. Please enter current date and date in future.");
+            double tryAgain = intCalc.InterestCalc(date1.julianConversion(), date2.julianConversion());
+            balInt = tryAgain;
+        }
         
     do
         {
+            System.out.println("Please enter the type of transaction you wish to make.");
+            Scanner in = new Scanner(System.in);
             System.out.println("1) Deposit");
             System.out.println("2) Withdraw");
             System.out.println("3) Check Balance");
             System.out.println("4) Exit");
             selection = in.nextInt();
-            
-
+         
+        
         if(selection == 1)
         {
-            double balInt = intCalc.InterestCalc(date1.julianConversion(), date2.julianConversion());
             double tempDeposit = date2.deposit(balInt);
         }
         else if (selection == 2)
         {
-            double balInt = intCalc.InterestCalc(date1.julianConversion(), date2.julianConversion());
             double tempWithdraw = date2.withdraw(balInt);
         }
         else if (selection == 3)
         {
-            double balInt = intCalc.InterestCalc(date1.julianConversion(), date2.julianConversion());
             double tempCheckBalance = date2.checkBalance(balInt);
         }
+
         }while(selection != 4);
         
     }
