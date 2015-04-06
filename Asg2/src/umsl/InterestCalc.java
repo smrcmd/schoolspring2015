@@ -12,18 +12,26 @@ package umsl;
 public class InterestCalc {
     public double InterestCalc(double date1, double date2)
     {
-        double interest = 1.005;
+        double interestRate = 0.05;
+        double daysYear = 365;
+        double interest = interestRate/daysYear;
         double newBalInt = 0;
         double newInterest = 0;
         double balance = 100;
         double dateDiff;
+        int count=0;
         if (date2 > date1)
             {
                 dateDiff = date2 - date1;
                 dateDiff = dateDiff - 1;
-                newInterest = dateDiff * interest;
-                newBalInt = balance + newInterest;
                 System.out.println("Interest will be calculated for " + dateDiff + " days");
+                while (count <= dateDiff)
+                {
+                    newInterest = balance * interest;
+                    newBalInt = balance + newInterest;
+                    balance = newBalInt;
+                    count++;
+                }
                 System.out.println("Your new balance with interest is " + newBalInt + ".");
             }
         else

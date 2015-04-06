@@ -35,8 +35,7 @@ public class Asg2Menu{
             System.out.println("3) Check Balance");
             System.out.println("4) Exit");
             selection = in.nextInt();
-         
-        
+
         if(selection == 1)
         {
             double tempDeposit = date2.deposit(balInt);
