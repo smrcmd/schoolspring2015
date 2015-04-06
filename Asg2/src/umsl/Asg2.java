@@ -5,7 +5,7 @@
  */
 package umsl;
 import java.util.Scanner;
-//import java.util.GregorianCalendar;
+import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
 /**
  *
@@ -18,19 +18,24 @@ public class Asg2
     public double newBalInt;
 
     
-    /*public void currentDate()
+    public String currentDate()
     {
-        String month="";
-        String day="";
-        String year="";
+        int month;
+        String day;
+        String year;
+        String date;
 
         GregorianCalendar gregorianCalendar=new GregorianCalendar();            
-        month=String.valueOf(gregorianCalendar.get(GregorianCalendar.MONTH));            
+        month=(gregorianCalendar.get(GregorianCalendar.MONTH));            
         day=String.valueOf(gregorianCalendar.get(GregorianCalendar.DAY_OF_MONTH));
         year=String.valueOf(gregorianCalendar.get(GregorianCalendar.YEAR));
+        month += 1;
+        Integer.toString(month);
         System.out.println("Today's date is " + month + "/" + day + "/" + year);
+        date = month+"/"+day+"/"+year;
+        return(date);
     }
-    */
+    
     
     /*public double calcInterest(double date1, double date2)
     {

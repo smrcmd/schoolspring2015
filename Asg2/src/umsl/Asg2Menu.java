@@ -18,6 +18,8 @@ public class Asg2Menu{
         Asg2 date1 = new Asg2();
         Asg2 date2 = new Asg2();
         InterestCalc intCalc = new InterestCalc();
+        Asg2 currentdate = new Asg2();
+        String today = currentdate.currentDate();
         double balInt = intCalc.InterestCalc(date1.julianConversion(), date2.julianConversion());
         if (balInt < 0)
         {
