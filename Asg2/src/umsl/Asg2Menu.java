@@ -15,16 +15,27 @@ public class Asg2Menu{
     public void Asg2Menu()
     {
         int selection;
-        Asg2 date1 = new Asg2();
-        Asg2 date2 = new Asg2();
-        InterestCalc intCalc = new InterestCalc();
+        //Asg2 date1 = new Asg2();
+        //Asg2 date2 = new Asg2();
+        Asg2 asg2 = new Asg2();
+        Date sDate1 = new Date();
         Asg2 currentdate = new Asg2();
+        JulianCalc temp = new JulianCalc();
+        JulianCalc temp2 = new JulianCalc();
+        InterestCalc intCalc = new InterestCalc();
+        
         String today = currentdate.currentDate();
-        double balInt = intCalc.InterestCalc(date1.julianConversion(), date2.julianConversion());
+        double todayJul = temp.JulianCalc(today);
+        String futureDate = sDate1.Date();
+        double futureDateJul = temp2.JulianCalc(futureDate);
+        double balInt = intCalc.InterestCalc(todayJul, futureDateJul);
+        
         if (balInt < 0)
         {
             System.out.println("You did not enter valid dates. Please enter current date and date in future.");
-            double tryAgain = intCalc.InterestCalc(date1.julianConversion(), date2.julianConversion());
+            futureDate = sDate1.Date();
+            futureDateJul = temp2.JulianCalc(futureDate);
+            double tryAgain = intCalc.InterestCalc(todayJul, futureDateJul);
             balInt = tryAgain;
         }
         
@@ -40,17 +51,17 @@ public class Asg2Menu{
 
         if(selection == 1)
         {
-            double tempDeposit = date2.deposit(balInt);
+            double tempDeposit = asg2.deposit(balInt);
             balInt = tempDeposit;
         }
         else if (selection == 2)
         {
-            double tempWithdraw = date2.withdraw(balInt);
+            double tempWithdraw = asg2.withdraw(balInt);
             balInt = tempWithdraw;
         }
         else if (selection == 3)
         {
-            double tempCheckBalance = date2.checkBalance(balInt);
+            double tempCheckBalance = asg2.checkBalance(balInt);
         }
 
         }while(selection != 4);

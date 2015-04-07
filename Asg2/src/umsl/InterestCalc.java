@@ -10,7 +10,7 @@ package umsl;
  * @author Sophie
  */
 public class InterestCalc {
-    public double InterestCalc(double date1, double date2)
+    public double InterestCalc(double todayJul, double futureDateJul)
     {
         double interestRate = 0.05;
         double daysYear = 365;
@@ -20,9 +20,9 @@ public class InterestCalc {
         double balance = 100;
         double dateDiff;
         int count=0;
-        if (date2 > date1)
+        if (futureDateJul > todayJul)
             {
-                dateDiff = date2 - date1;
+                dateDiff = futureDateJul - todayJul;
                 dateDiff = dateDiff - 1;
                 System.out.println("Interest will be calculated for " + dateDiff + " days");
                 while (count <= dateDiff)
