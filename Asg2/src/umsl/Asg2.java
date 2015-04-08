@@ -66,7 +66,8 @@ public class Asg2
         System.out.println("Your available balance is " + balInt + ".");
         return(balInt);
     } 
-    
+}
+    /*
     public double julianConversion()
     {
         int month = 0;
@@ -76,7 +77,7 @@ public class Asg2
         int julianDate1;
         int counter = 0;
         int num;
-        System.out.println("Please enter a date in the future in the format of 5/24/2015");
+        System.out.println("Please enter a date (i.e. 5/24/2015) in the future:  ");
         Scanner in = new Scanner(System.in);
         String dateInput = in.nextLine();
         StringTokenizer mytokenizer = new StringTokenizer(dateInput, "/");
@@ -162,4 +163,4 @@ public class Asg2
         return(julianDate1);
         
     }
-}
+} */

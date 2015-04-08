@@ -16,7 +16,7 @@ public class Date {
     
     public String Date()
     {
-        System.out.println("Please enter a future date in the format of 5/24/2015");
+        System.out.println("Please enter a date (i.e. 5/24/2015) in the future: ");
         System.out.println(" ");
         Scanner in = new Scanner(System.in);
         String dateInput = in.nextLine();

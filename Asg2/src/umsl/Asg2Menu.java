@@ -35,7 +35,7 @@ public class Asg2Menu{
         
         if (balInt < 0)
         {
-            System.out.println("You did not enter a valid date. Please enter a date in the future.");
+            System.out.println("You did not enter a valid date. ");
             futureDate = sDate1.Date();
             futureDateJul = temp2.JulianCalc(futureDate);
             double tryAgain = intCalc.InterestCalc(todayJul, futureDateJul);
@@ -59,8 +59,16 @@ public class Asg2Menu{
         }
         else if (selection == 2)
         {
-            double tempWithdraw = asg2.withdraw(balInt);
-            balInt = tempWithdraw;
+            if (balInt > 0)
+            {
+                double tempWithdraw = asg2.withdraw(balInt);
+                balInt = tempWithdraw;
+            }
+            else
+            {
+                System.out.println("Your current balance is " + balInt);
+                System.out.println("You have insufficient funds. Please make a deposit.");
+            }
         }
         else if (selection == 3)
         {
