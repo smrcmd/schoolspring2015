@@ -15,8 +15,11 @@ public class Asg2Menu{
     public void Asg2Menu()
     {
         int selection;
-        //Asg2 date1 = new Asg2();
-        //Asg2 date2 = new Asg2();
+        double todayJul;
+        String futureDate;
+        double futureDateJul;
+        double balInt;
+        
         Asg2 asg2 = new Asg2();
         Date sDate1 = new Date();
         Asg2 currentdate = new Asg2();
@@ -25,14 +28,14 @@ public class Asg2Menu{
         InterestCalc intCalc = new InterestCalc();
         
         String today = currentdate.currentDate();
-        double todayJul = temp.JulianCalc(today);
-        String futureDate = sDate1.Date();
-        double futureDateJul = temp2.JulianCalc(futureDate);
-        double balInt = intCalc.InterestCalc(todayJul, futureDateJul);
+        todayJul = temp.JulianCalc(today);
+        futureDate = sDate1.Date();
+        futureDateJul = temp2.JulianCalc(futureDate);
+        balInt = intCalc.InterestCalc(todayJul, futureDateJul);
         
         if (balInt < 0)
         {
-            System.out.println("You did not enter valid dates. Please enter current date and date in future.");
+            System.out.println("You did not enter a valid date. Please enter a date in the future.");
             futureDate = sDate1.Date();
             futureDateJul = temp2.JulianCalc(futureDate);
             double tryAgain = intCalc.InterestCalc(todayJul, futureDateJul);

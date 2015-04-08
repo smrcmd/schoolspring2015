@@ -36,18 +36,6 @@ public class Asg2
         return(date);
     }
     
-    
-    /*public double calcInterest(double date1, double date2)
-    {
-        double dateDiff = 0;
-        dateDiff = date2 - date1;
-        interest = dateDiff * interest;
-        newBalInt = balance * interest;
-        System.out.println("Your new balance with interest is " + newBalInt + ".");
-        return (newBalInt);
-    }
-    */
-    
     public double deposit(double balInt)
     {
         double depositAMT;
@@ -85,10 +73,10 @@ public class Asg2
         int day = 0;
         int year = 0;
         int julianMonth = 0;
-        int julianDate1 = 0;
+        int julianDate1;
         int counter = 0;
         int num;
-        System.out.println("Please enter a date in the format of 5/24/2015");
+        System.out.println("Please enter a date in the future in the format of 5/24/2015");
         Scanner in = new Scanner(System.in);
         String dateInput = in.nextLine();
         StringTokenizer mytokenizer = new StringTokenizer(dateInput, "/");
