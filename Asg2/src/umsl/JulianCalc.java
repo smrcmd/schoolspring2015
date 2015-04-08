@@ -99,7 +99,6 @@ public class JulianCalc {
         }
         
         julianDate1 = julianMonth + day;
-        System.out.println(julianDate1 + " Julian days");
         System.out.println(" ");
         return(julianDate1);
     }
