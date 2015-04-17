@@ -5,6 +5,7 @@
  */
 package umsl;
 
+import java.util.*;
 import java.util.Scanner;
 
 /**
@@ -12,32 +13,51 @@ import java.util.Scanner;
  * @author Sophie
  */
 public class AccountArray {
-    public static void main(String[] args)
-    {
-            String id;
-            float balance, interest;
-            Scanner in = new Scanner(System.in);
-            Accounts[] sarray = new Accounts[3]; //creates 3 parking spots
-
-            for(int i=0; i<sarray.length; i++)
-            {
-                    System.out.print("Enter ID#: ");
-                    id = in.next();
-                    System.out.print("Enter Exam 1: ");
-                    balance = in.nextFloat();
-                    System.out.print("Enter Exam 2: ");
-                    interest = in.nextFloat();
-
-                    sarray[i] = new Accounts();	
-                    sarray[i].setaccountID(id);
-                    sarray[i].setAccountBalance(balance);
-                    sarray[i].setAccountInterest(interest);
-            }
-
-            for(int i=0; i<sarray.length; i++)
-            {
-                    sarray[i].showAll();
-            }
-    }
     
+    ArrayList<float[]> accountTot = new ArrayList<>();
+    
+    public void AccountArray()
+    {
+            
+            float id;
+            float balance = 100;
+            float[] Account; //creates 2 parking spots
+            Account = new float[2];
+            System.out.println("Please enter a number you wish to label your account.");
+            Scanner in = new Scanner(System.in);
+            id=in.nextFloat();
+
+            for(int i=0; i<Account.length; i++)
+            {
+                    Account[i] = id;
+                    Account[i] = balance;
+            }
+         
+            System.out.println("Account ID: " + id);
+            System.out.println("Account Balance: " + balance);
+            System.out.println();
+            
+            accountTot.add(Account);
+            System.out.println("The accounts available are:");
+            System.out.println(accountTot);
+    } 
+    public int selectAccount()
+        {
+            System.out.println("Please enter your account number");
+            Scanner select = new Scanner(System.in);
+            int selection = select.nextInt();
+            
+            for (int j = 0; j < accountTot.size(); j++)
+            {
+                float outer[] = accountTot.get(j);
+                
+                    for (int k = 0; k <=outer.length; k++)
+    
+                        if(k == selection)
+                        {
+                            System.out.println("This is a test");
+                        }
+            }
+            return(selection);
+        }
 }

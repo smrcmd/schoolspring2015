@@ -19,19 +19,39 @@ public class Asg2Menu{
         String futureDate;
         double futureDateJul;
         double balInt;
+        String answer;
+
+        System.out.println("Is this your first time banking with Sophie Bank?");
+        Scanner response = new Scanner(System.in);;
+        answer = response.nextLine();
+        
+        if(answer.equalsIgnoreCase("yes"))
+        {
+            AccountArray aArray = new AccountArray();
+            aArray.AccountArray();
+        }
+        else
+        {
+            AccountArray aArray = new AccountArray();
+            aArray.selectAccount();
+        }
+        
+        Asg2 currentdate = new Asg2();
+        String today = currentdate.currentDate();
+        
+        JulianCalc temp = new JulianCalc();
+        todayJul = temp.JulianCalc(today);
+        
+        Date sDate1 = new Date();
+        futureDate = sDate1.Date();
+        
+        JulianCalc temp2 = new JulianCalc();
+        futureDateJul = temp2.JulianCalc(futureDate);
+        
+        InterestCalc intCalc = new InterestCalc();
+        balInt = intCalc.InterestCalc(todayJul, futureDateJul);
         
         Asg2 asg2 = new Asg2();
-        Date sDate1 = new Date();
-        Asg2 currentdate = new Asg2();
-        JulianCalc temp = new JulianCalc();
-        JulianCalc temp2 = new JulianCalc();
-        InterestCalc intCalc = new InterestCalc();
-        
-        String today = currentdate.currentDate();
-        todayJul = temp.JulianCalc(today);
-        futureDate = sDate1.Date();
-        futureDateJul = temp2.JulianCalc(futureDate);
-        balInt = intCalc.InterestCalc(todayJul, futureDateJul);
         
         if (balInt < 0)
         {

@@ -38,6 +38,7 @@ public class InterestCalc {
             {
                 newBalInt = -1;
             }
+
         return (newBalInt);
         
     }
