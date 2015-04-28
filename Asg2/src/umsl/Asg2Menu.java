@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Asg2Menu{
 
     
-    public void Asg2Menu()
+    public void Asg2Menu(int balance)
     {
         int selection;
         double todayJul;
@@ -21,20 +21,7 @@ public class Asg2Menu{
         double balInt;
         String answer;
 
-        System.out.println("Is this your first time banking with Sophie Bank?");
-        Scanner response = new Scanner(System.in);;
-        answer = response.nextLine();
         
-        if(answer.equalsIgnoreCase("yes"))
-        {
-            AccountArray aArray = new AccountArray();
-            aArray.AccountArray();
-        }
-        else
-        {
-            AccountArray aArray = new AccountArray();
-            aArray.selectAccount();
-        }
         
         Asg2 currentdate = new Asg2();
         String today = currentdate.currentDate();
@@ -49,7 +36,7 @@ public class Asg2Menu{
         futureDateJul = temp2.JulianCalc(futureDate);
         
         InterestCalc intCalc = new InterestCalc();
-        balInt = intCalc.InterestCalc(todayJul, futureDateJul);
+        balInt = intCalc.InterestCalc(todayJul, futureDateJul, balance); // take out balance to make code work
         
         Asg2 asg2 = new Asg2();
         
@@ -58,7 +45,7 @@ public class Asg2Menu{
             System.out.println("You did not enter a valid date. ");
             futureDate = sDate1.Date();
             futureDateJul = temp2.JulianCalc(futureDate);
-            double tryAgain = intCalc.InterestCalc(todayJul, futureDateJul);
+            double tryAgain = intCalc.InterestCalc(todayJul, futureDateJul, balance); // take out balance to make code work
             balInt = tryAgain;
         }
         

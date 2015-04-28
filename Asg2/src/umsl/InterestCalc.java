@@ -10,14 +10,14 @@ package umsl;
  * @author Sophie
  */
 public class InterestCalc {
-    public double InterestCalc(double todayJul, double futureDateJul)
+    public double InterestCalc(double todayJul, double futureDateJul, float balance)
     {
         double interestRate = 0.05;
         double daysYear = 365;
         double interest = interestRate/daysYear;
         double newBalInt = 0;
+        double bal = 100;
         double newInterest = 0;
-        double balance = 100;
         double dateDiff;
         int count=0;
         if (futureDateJul > todayJul)
@@ -27,9 +27,9 @@ public class InterestCalc {
                 System.out.println("Interest will be calculated for " + dateDiff + " days");
                 while (count <= dateDiff)
                 {
-                    newInterest = balance * interest;
+                    newInterest = bal * interest;
                     newBalInt = balance + newInterest;
-                    balance = newBalInt;
+                    bal = newBalInt;
                     count++;
                 }
                 System.out.println("Your new balance with interest is " + newBalInt + ".");

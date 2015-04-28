@@ -7,57 +7,70 @@ package umsl;
 
 import java.util.*;
 import java.util.Scanner;
+import java.io.*;
 
 /**
  *
  * @author Sophie
  */
 public class AccountArray {
+    float[] AccountArray = new float[3];
     
-    ArrayList<float[]> accountTot = new ArrayList<>();
-    
-    public void AccountArray()
+    public void populateArray()
     {
-            
-            float id;
             float balance = 100;
-            float[] Account; //creates 2 parking spots
-            Account = new float[2];
-            System.out.println("Please enter a number you wish to label your account.");
-            Scanner in = new Scanner(System.in);
-            id=in.nextFloat();
-
-            for(int i=0; i<Account.length; i++)
+            int i = 0;
+ 
+            for(i=0; i<AccountArray.length; i++)
             {
-                    Account[i] = id;
-                    Account[i] = balance;
+                    AccountArray[i] = balance;
             }
-         
-            System.out.println("Account ID: " + id);
-            System.out.println("Account Balance: " + balance);
+            
+            System.out.println("There are " + AccountArray.length + " accounts available.");
             System.out.println();
             
-            accountTot.add(Account);
-            System.out.println("The accounts available are:");
-            System.out.println(accountTot);
-    } 
-    public int selectAccount()
-        {
-            System.out.println("Please enter your account number");
-            Scanner select = new Scanner(System.in);
-            int selection = select.nextInt();
-            
-            for (int j = 0; j < accountTot.size(); j++)
+            try
             {
-                float outer[] = accountTot.get(j);
-                
-                    for (int k = 0; k <=outer.length; k++)
-    
-                        if(k == selection)
-                        {
-                            System.out.println("This is a test");
-                        }
+                FileOutputStream fout = new FileOutputStream("file.out");
+                ObjectOutputStream oout = new ObjectOutputStream(fout);
+                oout.writeObject(AccountArray);
+                oout.close();
+                System.out.println("Done");
             }
-            return(selection);
+            catch (Throwable e)
+            {
+                System.err.println(e);
+            }
+    } 
+    
+    public void readArray()
+    {
+        
+        try
+        {
+            FileInputStream fIn = new FileInputStream("file.out");
+            ObjectInputStream oIn = new ObjectInputStream(fIn);
+            AccountArray = (float[]) oIn.readObject();
+            fIn.close();
+        }
+        catch (Throwable e)
+        {
+            System.err.println(e);
+        }
+        System.out.println(AccountArray.length + " arrays to choose from.");
+    }
+
+    /**
+     *
+     * @return
+     */
+    public float selectAccount()
+        {
+            System.out.println("Please enter the account you wish to access (0,1,2):" );
+            Scanner select = new Scanner(System.in);
+            float input = select.nextFloat();
+            Asg2Menu menu = new Asg2Menu(); //call Asg2Menu from AccountArray
+            AccountArray[input].Asg2Menu();     
+            return(input);
         }
 }
