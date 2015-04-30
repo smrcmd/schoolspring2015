@@ -16,7 +16,71 @@ public class Asg2
     private double balance = 100;
     private double interest = 1.05;
     public double newBalInt;
+    
 
+    public void Asg2Menu()
+    {
+        int selection;
+        double todayJul;
+        String futureDate;
+        double futureDateJul;
+        double balInt;
+        String answer;
+
+        Asg2 asg2 = new Asg2();
+        String today = asg2.currentDate();
+        todayJul = asg2.JulianCalc(today);
+        futureDate = asg2.Date();
+        futureDateJul = asg2.JulianCalc(futureDate);
+        balInt = asg2.InterestCalc(todayJul, futureDateJul); // take out balance to make code work
+        
+        
+        
+        if (balInt < 0)
+        {
+            System.out.println("You did not enter a valid date. ");
+            futureDate = asg2.Date();
+            futureDateJul = asg2.JulianCalc(futureDate);
+            double tryAgain = asg2.InterestCalc(todayJul, futureDateJul); // take out balance to make code work
+            balInt = tryAgain;
+        }
+        
+    do
+        {
+            System.out.println("Please enter the type of transaction you wish to make.");
+            Scanner in = new Scanner(System.in);
+            System.out.println("1) Deposit");
+            System.out.println("2) Withdraw");
+            System.out.println("3) Check Balance");
+            System.out.println("4) Exit");
+            selection = in.nextInt();
+
+        if(selection == 1)
+        {
+            double tempDeposit = asg2.deposit(balInt);
+            balInt = tempDeposit;
+        }
+        else if (selection == 2)
+        {
+            if (balInt > 0)
+            {
+                double tempWithdraw = asg2.withdraw(balInt);
+                balInt = tempWithdraw;
+            }
+            else
+            {
+                System.out.println("Your current balance is " + balInt);
+                System.out.println("You have insufficient funds. Please make a deposit.");
+            }
+        }
+        else if (selection == 3)
+        {
+            double tempCheckBalance = asg2.checkBalance(balInt);
+        }
+
+        }while(selection != 4);
+        
+    }
     
     public String currentDate()
     {
@@ -34,6 +98,39 @@ public class Asg2
         System.out.println("Today's date is " + month + "/" + day + "/" + year);
         date = month+"/"+day+"/"+year;
         return(date);
+    }
+    
+    public double InterestCalc(double todayJul, double futureDateJul)
+    {
+        double interestRate = 0.05;
+        double daysYear = 365;
+        double interest = interestRate/daysYear;
+        double newBalInt = 0;
+        double bal = 100;
+        double newInterest = 0;
+        double dateDiff;
+        int count=0;
+        if (futureDateJul > todayJul)
+            {
+                dateDiff = futureDateJul - todayJul;
+                dateDiff = dateDiff - 1;
+                System.out.println("Interest will be calculated for " + dateDiff + " days");
+                while (count <= dateDiff)
+                {
+                    newInterest = bal * interest;
+                    newBalInt = balance + newInterest;
+                    bal = newBalInt;
+                    count++;
+                }
+                System.out.println("Your new balance with interest is " + newBalInt + ".");
+            }
+        else
+            {
+                newBalInt = -1;
+            }
+
+        return (newBalInt);
+        
     }
     
     public double deposit(double balInt)
@@ -66,21 +163,17 @@ public class Asg2
         System.out.println("Your available balance is " + balInt + ".");
         return(balInt);
     } 
-}
-    /*
-    public double julianConversion()
+    
+    public double JulianCalc(String today)
     {
         int month = 0;
         int day = 0;
         int year = 0;
         int julianMonth = 0;
-        int julianDate1;
+        int julianDate1 = 0;
         int counter = 0;
         int num;
-        System.out.println("Please enter a date (i.e. 5/24/2015) in the future:  ");
-        Scanner in = new Scanner(System.in);
-        String dateInput = in.nextLine();
-        StringTokenizer mytokenizer = new StringTokenizer(dateInput, "/");
+        StringTokenizer mytokenizer = new StringTokenizer(today, "/");
 
         while(mytokenizer.hasMoreTokens())
         {
@@ -160,7 +253,17 @@ public class Asg2
         }
         
         julianDate1 = julianMonth + day;
+        System.out.println(" ");
         return(julianDate1);
-        
     }
-} */
+    
+    public String Date()
+    {
+        System.out.println("Please enter a date (i.e. 5/24/2015) in the future: ");
+        System.out.println(" ");
+        Scanner in = new Scanner(System.in);
+        String dateInput = in.nextLine();
+        return(dateInput);
+    }
+}
+  

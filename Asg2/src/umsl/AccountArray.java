@@ -14,28 +14,56 @@ import java.io.*;
  * @author Sophie
  */
 public class AccountArray {
-    float[] AccountArray = new float[3];
+    Asg2[] AcctArray = new Asg2[3];
+    
+    
+    public static void main(String args[])
+    {
+        AccountArray aa = new AccountArray();
+        
+        System.out.println("Is this your first time banking with Sophie Bank? 'yes' or 'no'");
+        Scanner response = new Scanner(System.in);
+        String answer = response.nextLine();
+        float balance = 100;
+        
+        if(answer.equalsIgnoreCase("yes"))
+        {
+           aa.populateArray();
+           // aa.writearray();
+           aa.readArray();
+           aa.selectAccount();
+        }
+        else
+        {
+           aa.readArray();
+           balance = aa.selectAccount();
+        }
+        
+        
+        //menu.Asg2Menu(balance); 
+    }
     
     public void populateArray()
     {
             float balance = 100;
-            int i = 0;
+            int i;
  
-            for(i=0; i<AccountArray.length; i++)
+            for(i=0; i<AcctArray.length; i++)
             {
-                    AccountArray[i] = balance;
+                    
+                    AcctArray[i] = float Asg2;
             }
             
-            System.out.println("There are " + AccountArray.length + " accounts available.");
+            System.out.println("There are " + AcctArray.length + " accounts available.");
             System.out.println();
             
             try
             {
                 FileOutputStream fout = new FileOutputStream("file.out");
                 ObjectOutputStream oout = new ObjectOutputStream(fout);
-                oout.writeObject(AccountArray);
+                oout.writeObject(AcctArray);
                 oout.close();
-                System.out.println("Done");
+                System.out.println("Populate array has run.");
             }
             catch (Throwable e)
             {
@@ -45,19 +73,18 @@ public class AccountArray {
     
     public void readArray()
     {
-        
         try
         {
             FileInputStream fIn = new FileInputStream("file.out");
             ObjectInputStream oIn = new ObjectInputStream(fIn);
-            AccountArray = (float[]) oIn.readObject();
+            AcctArray= (float[]) oIn.readObject();
             fIn.close();
         }
         catch (Throwable e)
         {
             System.err.println(e);
         }
-        System.out.println(AccountArray.length + " arrays to choose from.");
+        System.out.println(AcctArray.length + " arrays to choose from.");
     }
 
     /**
@@ -70,7 +97,8 @@ public class AccountArray {
             Scanner select = new Scanner(System.in);
             float input = select.nextFloat();
             Asg2Menu menu = new Asg2Menu(); //call Asg2Menu from AccountArray
-            AccountArray[input].Asg2Menu();     
+            AcctArray[input].Asg2Menu(balance);
+            //AcctArray[input]
             return(input);
         }
 }

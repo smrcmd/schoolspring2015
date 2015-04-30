@@ -10,7 +10,7 @@ package umsl;
  * @author Sophie
  */
 public class InterestCalc {
-    public double InterestCalc(double todayJul, double futureDateJul, float balance)
+    public double InterestCalc(double todayJul, double futureDateJul)
     {
         double interestRate = 0.05;
         double daysYear = 365;
