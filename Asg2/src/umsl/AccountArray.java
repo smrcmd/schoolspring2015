@@ -45,13 +45,10 @@ public class AccountArray {
     
     public void populateArray()
     {
-            float balance = 100;
-            int i;
- 
-            for(i=0; i<AcctArray.length; i++)
+        for(int i=0; i<AcctArray.length; i++)
             {
-                    
-                    AcctArray[i] = float Asg2;
+                    AcctArray[i] = new Asg2();	
+                    AcctArray[i].setBalance(100);
             }
             
             System.out.println("There are " + AcctArray.length + " accounts available.");
@@ -63,7 +60,12 @@ public class AccountArray {
                 ObjectOutputStream oout = new ObjectOutputStream(fout);
                 oout.writeObject(AcctArray);
                 oout.close();
-                System.out.println("Populate array has run.");
+                System.out.println("Populate array has written to a file.");
+                
+                for (int i=0; i<AcctArray.length; i++)
+                {
+                    AcctArray[i].showAll();
+                }
             }
             catch (Throwable e)
             {
@@ -77,7 +79,7 @@ public class AccountArray {
         {
             FileInputStream fIn = new FileInputStream("file.out");
             ObjectInputStream oIn = new ObjectInputStream(fIn);
-            AcctArray= (float[]) oIn.readObject();
+            AcctArray = oIn.readObject();
             fIn.close();
         }
         catch (Throwable e)
