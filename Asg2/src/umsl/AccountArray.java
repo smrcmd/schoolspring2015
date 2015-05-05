@@ -17,14 +17,14 @@ public class AccountArray {
     Asg2[] AcctArray = new Asg2[3];
     
     
-    public static void main(String args[])
+    public static void main(String args[]) throws IOException, NotSerializableException, EOFException
     {
         AccountArray aa = new AccountArray();
         
         System.out.println("Is this your first time banking with Sophie Bank? 'yes' or 'no'");
         Scanner response = new Scanner(System.in);
         String answer = response.nextLine();
-        float balance = 100;
+        double balance = 100;
         
         if(answer.equalsIgnoreCase("yes"))
         {
@@ -43,7 +43,7 @@ public class AccountArray {
         //menu.Asg2Menu(balance); 
     }
     
-    public void populateArray()
+    public void populateArray() throws IOException, NotSerializableException, EOFException
     {
         for(int i=0; i<AcctArray.length; i++)
             {
@@ -54,18 +54,21 @@ public class AccountArray {
             System.out.println("There are " + AcctArray.length + " accounts available.");
             System.out.println();
             
+            for (int i=0; i<1; i++)
+                {
+                    AcctArray[i].showAll();
+                }
+            
             try
             {
-                FileOutputStream fout = new FileOutputStream("file.out");
-                ObjectOutputStream oout = new ObjectOutputStream(fout);
+                OutputStream fout = new FileOutputStream("file.out");
+                OutputStream buffer = new BufferedOutputStream(fout);
+                //ObjectOutput output = new ObjectOutputStream(buffer);
+                ObjectOutputStream oout = new ObjectOutputStream(buffer);
                 oout.writeObject(AcctArray);
                 oout.close();
                 System.out.println("Populate array has written to a file.");
                 
-                for (int i=0; i<AcctArray.length; i++)
-                {
-                    AcctArray[i].showAll();
-                }
             }
             catch (Throwable e)
             {
@@ -79,7 +82,7 @@ public class AccountArray {
         {
             FileInputStream fIn = new FileInputStream("file.out");
             ObjectInputStream oIn = new ObjectInputStream(fIn);
-            AcctArray = oIn.readObject();
+            AcctArray = (Asg2[])oIn.readObject();
             fIn.close();
         }
         catch (Throwable e)
@@ -93,14 +96,13 @@ public class AccountArray {
      *
      * @return
      */
-    public float selectAccount()
+    public double selectAccount()
         {
             System.out.println("Please enter the account you wish to access (0,1,2):" );
             Scanner select = new Scanner(System.in);
-            float input = select.nextFloat();
+            double input = select.nextDouble();
             Asg2Menu menu = new Asg2Menu(); //call Asg2Menu from AccountArray
-            AcctArray[input].Asg2Menu(balance);
-            //AcctArray[input]
+            AcctArray[input].Asg2Menu();
             return(input);
         }
 }
