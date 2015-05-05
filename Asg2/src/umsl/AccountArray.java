@@ -6,7 +6,6 @@
 package umsl;
 
 import java.util.*;
-import java.util.Scanner;
 import java.io.*;
 
 /**
@@ -29,14 +28,13 @@ public class AccountArray {
         if(answer.equalsIgnoreCase("yes"))
         {
            aa.populateArray();
-           // aa.writearray();
            aa.readArray();
            aa.selectAccount();
         }
         else
         {
            aa.readArray();
-           balance = aa.selectAccount();
+           aa.selectAccount();
         }
         
         
@@ -63,10 +61,9 @@ public class AccountArray {
             {
                 OutputStream fout = new FileOutputStream("file.out");
                 OutputStream buffer = new BufferedOutputStream(fout);
-                //ObjectOutput output = new ObjectOutputStream(buffer);
                 ObjectOutputStream oout = new ObjectOutputStream(buffer);
                 oout.writeObject(AcctArray);
-                oout.close();
+                fout.close();
                 System.out.println("Populate array has written to a file.");
                 
             }
@@ -83,6 +80,12 @@ public class AccountArray {
             FileInputStream fIn = new FileInputStream("file.out");
             ObjectInputStream oIn = new ObjectInputStream(fIn);
             AcctArray = (Asg2[])oIn.readObject();
+            
+            for (int i=0; i<1; i++)
+                {
+                    AcctArray[i].showAll();
+                }
+            
             fIn.close();
         }
         catch (Throwable e)
@@ -96,13 +99,13 @@ public class AccountArray {
      *
      * @return
      */
-    public double selectAccount()
+    public void selectAccount()
         {
             System.out.println("Please enter the account you wish to access (0,1,2):" );
             Scanner select = new Scanner(System.in);
-            double input = select.nextDouble();
+            int input = select.nextInt();
             Asg2Menu menu = new Asg2Menu(); //call Asg2Menu from AccountArray
             AcctArray[input].Asg2Menu();
-            return(input);
+            //return(input);
         }
 }

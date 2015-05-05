@@ -7,24 +7,37 @@ package umsl;
 import java.util.Scanner;
 import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
+import java.io.*;
 /**
  *
  * @author Sophie
  */
-public class Asg2 
+public class Asg2 implements Serializable
 {
     private double balance = 100;
-    private double interest = 1.05;
+    public double interest = 1.05;
     public double newBalInt;
+    public double balInt = 0;
     
-
+    public void setBalance(double b1){
+            balance = b1;	
+    }
+    
+    public void showAll()
+        {
+            int i;
+            for (i = 1; i<=3; i++)
+            {
+		System.out.println("Account "+ i + ": " + balance);
+            }
+	}
+    
     public void Asg2Menu()
     {
-        int selection;
+        double selection;
         double todayJul;
         String futureDate;
         double futureDateJul;
-        double balInt;
         String answer;
 
         Asg2 asg2 = new Asg2();
@@ -34,7 +47,7 @@ public class Asg2
         futureDateJul = asg2.JulianCalc(futureDate);
         balInt = asg2.InterestCalc(todayJul, futureDateJul); // take out balance to make code work
         
-        
+       
         
         if (balInt < 0)
         {
@@ -53,7 +66,7 @@ public class Asg2
             System.out.println("2) Withdraw");
             System.out.println("3) Check Balance");
             System.out.println("4) Exit");
-            selection = in.nextInt();
+            selection = in.nextDouble();
 
         if(selection == 1)
         {
@@ -104,10 +117,10 @@ public class Asg2
     {
         double interestRate = 0.05;
         double daysYear = 365;
-        double interest = interestRate/daysYear;
-        double newBalInt = 0;
+        interest = interestRate/daysYear;
+        newBalInt = 0;
         double bal = 100;
-        double newInterest = 0;
+        double newInterest;
         double dateDiff;
         int count=0;
         if (futureDateJul > todayJul)
