@@ -62,6 +62,7 @@ public class AccountArray {
                 OutputStream buffer = new BufferedOutputStream(fout);
                 ObjectOutputStream oout = new ObjectOutputStream(buffer);
                 oout.writeObject(AcctArray);
+                oout.flush();
                 fout.close();
                 System.out.println("Populate array has written to a file.");
                 
