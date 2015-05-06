@@ -32,7 +32,7 @@ public class Asg2 implements Serializable
             }
 	}
     
-    public void Asg2Menu()
+    public double Asg2Menu()
     {
         double selection;
         double todayJul;
@@ -65,7 +65,7 @@ public class Asg2 implements Serializable
             System.out.println("1) Deposit");
             System.out.println("2) Withdraw");
             System.out.println("3) Check Balance");
-            System.out.println("4) Exit");
+            System.out.println("4) Exit to Main");
             selection = in.nextDouble();
 
         if(selection == 1)
@@ -92,6 +92,8 @@ public class Asg2 implements Serializable
         }
 
         }while(selection != 4);
+    
+        return(balInt);
         
     }
     
@@ -119,7 +121,6 @@ public class Asg2 implements Serializable
         double daysYear = 365;
         interest = interestRate/daysYear;
         newBalInt = 0;
-        double bal = 100;
         double newInterest;
         double dateDiff;
         int count=0;
@@ -130,9 +131,9 @@ public class Asg2 implements Serializable
                 System.out.println("Interest will be calculated for " + dateDiff + " days");
                 while (count <= dateDiff)
                 {
-                    newInterest = bal * interest;
+                    newInterest = balance * interest;
                     newBalInt = balance + newInterest;
-                    bal = newBalInt;
+                    balance = newBalInt;
                     count++;
                 }
                 System.out.println("Your new balance with interest is " + newBalInt + ".");
