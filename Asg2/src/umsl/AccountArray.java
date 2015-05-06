@@ -29,11 +29,13 @@ public class AccountArray {
            aa.populateArray();
            aa.readArray();
            aa.selectAccount();
+           aa.writeArray();
         }
         else
         {
            aa.readArray();
            aa.selectAccount();
+           aa.writeArray();
         }
         
         
@@ -95,6 +97,24 @@ public class AccountArray {
         System.out.println(AcctArray.length + " arrays to choose from.");
     }
 
+    public void writeArray()
+    {
+            try
+            {
+                OutputStream fout = new FileOutputStream("file.out");
+                OutputStream buffer = new BufferedOutputStream(fout);
+                ObjectOutputStream oout = new ObjectOutputStream(buffer);
+                oout.writeObject(AcctArray);
+                oout.flush();
+                fout.close();
+                System.out.println("Array has written to a file.");
+                
+            }
+            catch (Throwable g)
+            {
+                System.err.println(g);
+            }
+    }
     /**
      *
      * @return
@@ -106,6 +126,5 @@ public class AccountArray {
             int input = select.nextInt();
             Asg2Menu menu = new Asg2Menu(); //call Asg2Menu from AccountArray
             AcctArray[input].Asg2Menu();
-            //return(input);
         }
 }
