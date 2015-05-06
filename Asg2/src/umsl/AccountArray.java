@@ -23,8 +23,7 @@ public class AccountArray {
         System.out.println("Is this your first time banking with Sophie Bank? 'yes' or 'no'");
         Scanner response = new Scanner(System.in);
         String answer = response.nextLine();
-        double balance = 100;
-        
+
         if(answer.equalsIgnoreCase("yes"))
         {
            aa.populateArray();
@@ -67,13 +66,13 @@ public class AccountArray {
                 System.out.println("Populate array has written to a file.");
                 
             }
-            catch (Throwable e)
+            catch (Throwable f)
             {
-                System.err.println(e);
+                System.err.println(f);
             }
     } 
     
-    public void readArray()
+    public void readArray() throws EOFException
     {
         try
         {
