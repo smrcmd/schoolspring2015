@@ -9,7 +9,7 @@ import java.util.Scanner;
  *
  * @author Sophie
  */
-public class Asg2Menu{
+//public class Asg2Menu{
 
     
 //    public void Asg2Menu(int balance)

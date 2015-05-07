@@ -14,14 +14,18 @@ import java.io.*;
  */
 public class Asg2 implements Serializable
 {
+    private static final long serialVersionUID = 4712827889101249180L;
+    //private static final long serialVersionUID = 1213333962736752961L;
+    
     private double balance = 100;
     public double interest = 1.05;
     public double newBalInt;
     public double balInt = 0;
     
-    public void setBalance(double b1){
-            balance = b1;	
-    }
+    
+//    public void setBalance(double b1){
+//            balance = b1;	
+//    }
     
     public void showAll()
         {
@@ -34,29 +38,12 @@ public class Asg2 implements Serializable
     
     public double Asg2Menu()
     {
+        Asg2 asg2 = new Asg2();
         double selection;
-        double todayJul;
+        //double todayJul;
         String futureDate;
         double futureDateJul;
         String answer;
-
-        Asg2 asg2 = new Asg2();
-        String today = asg2.currentDate();
-        todayJul = asg2.JulianCalc(today);
-        futureDate = asg2.Date();
-        futureDateJul = asg2.JulianCalc(futureDate);
-        balInt = asg2.InterestCalc(todayJul, futureDateJul); // take out balance to make code work
-        
-       
-        
-        if (balInt < 0)
-        {
-            System.out.println("You did not enter a valid date. ");
-            futureDate = asg2.Date();
-            futureDateJul = asg2.JulianCalc(futureDate);
-            double tryAgain = asg2.InterestCalc(todayJul, futureDateJul); // take out balance to make code work
-            balInt = tryAgain;
-        }
         
     do
         {
@@ -70,30 +57,31 @@ public class Asg2 implements Serializable
 
         if(selection == 1)
         {
-            double tempDeposit = asg2.deposit(balInt);
-            balInt = tempDeposit;
+            double tempDeposit = asg2.deposit(balance);
+            balance = tempDeposit;
         }
         else if (selection == 2)
         {
-            if (balInt > 0)
+            if (balance > 0)
             {
-                double tempWithdraw = asg2.withdraw(balInt);
-                balInt = tempWithdraw;
+                double tempWithdraw = asg2.withdraw(balance);
+                balance = tempWithdraw;
             }
             else
             {
-                System.out.println("Your current balance is " + balInt);
+                System.out.println("Your current balance is " + balance);
                 System.out.println("You have insufficient funds. Please make a deposit.");
             }
         }
         else if (selection == 3)
         {
-            double tempCheckBalance = asg2.checkBalance(balInt);
+            double tempCheckBalance = asg2.checkBalance(balance);
+            balance = tempCheckBalance;
         }
 
         }while(selection != 4);
     
-        return(balInt);
+        return(balance);
         
     }
     
@@ -115,7 +103,7 @@ public class Asg2 implements Serializable
         return(date);
     }
     
-    public double InterestCalc(double todayJul, double futureDateJul)
+    public double InterestCalc(double todayJul, double futureDateJul, double balance)
     {
         double interestRate = 0.05;
         double daysYear = 365;
@@ -136,46 +124,66 @@ public class Asg2 implements Serializable
                     balance = newBalInt;
                     count++;
                 }
-                System.out.println("Your new balance with interest is " + newBalInt + ".");
+                System.out.println("Your new balance with interest is " + balance + ".");
             }
         else
             {
                 newBalInt = -1;
             }
 
-        return (newBalInt);
+        return (balance);
         
     }
     
-    public double deposit(double balInt)
+    public double deposit(double balance)
     {
         double depositAMT;
-        System.out.println("Your available balance is " + balInt + ".");
+        System.out.println("Your available balance is " + balance + ".");
         System.out.println("Please enter amount to deposit. Ex: 200.05");
         Scanner in = new Scanner(System.in);
         depositAMT = in.nextDouble();
-        balance = balInt + depositAMT;
+        balance = balance + depositAMT;
         System.out.println("Your deposit amount was " + depositAMT + ".");
         System.out.println("Your new balance is " + balance);
         return(balance);
     }
     
-    public double withdraw(double balInt)
+    public double withdraw(double balance)
     {
         double withdrawAMT;
-        System.out.println("Your available balance is " + balInt + ". Please enter amount to withdraw. Ex: 200.05");
+        System.out.println("Your available balance is " + balance + ". Please enter amount to withdraw. Ex: 200.05");
         Scanner in = new Scanner(System.in);
         withdrawAMT = in.nextDouble();
         System.out.println("Your withdrawal amount is " + withdrawAMT + ".");
-        balance = balInt - withdrawAMT;
+        balance = balance - withdrawAMT;
         System.out.println("Your new balance is " + balance);
         return(balance);
     }
     
-    public double checkBalance(double balInt)
+    public double checkBalance(double balance)
     {
-        System.out.println("Your available balance is " + balInt + ".");
-        return(balInt);
+        double todayJul;
+        String futureDate;
+        double futureDateJul;
+        Asg2 asg2 = new Asg2();
+
+        String today = asg2.currentDate();
+        todayJul = asg2.JulianCalc(today);
+        futureDate = asg2.Date();
+        futureDateJul = asg2.JulianCalc(futureDate);
+        balInt = asg2.InterestCalc(todayJul, futureDateJul, balance); // take out balance to make code work
+        
+        if (todayJul > futureDateJul)
+        {
+            System.out.println("You did not enter a valid date. ");
+            futureDate = asg2.Date();
+            futureDateJul = asg2.JulianCalc(futureDate);
+            double tryAgain = asg2.InterestCalc(todayJul, futureDateJul, balance); // take out balance to make code work
+            balInt = tryAgain;
+        }
+        balance = balInt;
+        System.out.println("Your available balance is " + balance + ".");
+        return(balance);
     } 
     
     public double JulianCalc(String today)
