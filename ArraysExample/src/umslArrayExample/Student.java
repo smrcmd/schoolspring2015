@@ -26,6 +26,12 @@ public class Student {
 	public void setExam2(float e2){
 		Exam2 = e2;	
 	}
+        
+        public void setAvg(float av)
+        {
+                calcAvg();
+        }
+        
 	
 	public void showAll(){
 		System.out.println();
@@ -38,7 +44,7 @@ public class Student {
         
          public void calcAvg()
         {
-            //return 
+            Avg = (Exam1 + Exam2)/2;
         }
         
         //public void showGrades()

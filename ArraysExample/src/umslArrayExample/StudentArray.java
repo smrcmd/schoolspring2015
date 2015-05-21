@@ -11,30 +11,59 @@ import java.util.Scanner;
  */
 public class StudentArray {
     
-	public static void main(String[] args){
-		String id;
-		float ex1, ex2;
-		Scanner kbd = new Scanner(System.in);
-		Student[] sarray = new Student[3]; //creates 3 parking spots
-		
-		for(int i=0; i<sarray.length; i++){
-			System.out.print("Enter ID#: ");
-			id = kbd.next();
-			System.out.print("Enter Exam 1: ");
-			ex1 = kbd.nextFloat();
-			System.out.print("Enter Exam 2: ");
-			ex2 = kbd.nextFloat();
-		
-			sarray[i] = new Student();	
-			sarray[i].setID(id);
-			sarray[i].setExam1(ex1);
-			sarray[i].setExam2(ex2);
-		}
+	public static void main(String[] args)
+        {
+            String id;
+            float ex1, ex2;
+            float av = 0;
+            Scanner kbd = new Scanner(System.in);
+            Student[] sarray = new Student[2]; //creates 2 parking spots
 
-		for(int i=0; i<sarray.length; i++){
-			sarray[i].showAll();
-		}
-	}
+            for(int i=0; i<sarray.length; i++)
+            {
+                    System.out.print("Enter ID#: ");
+                    id = kbd.next();
+                    System.out.print("Enter Exam 1: ");
+                    ex1 = kbd.nextFloat();
+                    System.out.print("Enter Exam 2: ");
+                    ex2 = kbd.nextFloat();
+
+                    sarray[i] = new Student();	
+                    sarray[i].setID(id);
+                    sarray[i].setExam1(ex1);
+                    sarray[i].setExam2(ex2);
+                    sarray[i].setAvg(av);
+            }
+
+            for(int i=0; i<sarray.length; i++)
+            {
+                    sarray[i].showAll();
+            }
+            
+            Scanner in = new Scanner(System.in);
+            Student[] nextArray = new Student[2]; //creates 2 parking spots
+
+            for(int i=0; i<nextArray.length; i++)
+            {
+                    System.out.print("Enter ID#: ");
+                    id = in.next();
+                    System.out.print("Enter Exam 1: ");
+                    ex1 = in.nextFloat();
+                    System.out.print("Enter Exam 2: ");
+                    ex2 = in.nextFloat();
+
+                    nextArray[i] = new Student();	
+                    nextArray[i].setID(id);
+                    nextArray[i].setExam1(ex1);
+                    nextArray[i].setExam2(ex2);
+                    nextArray[i].setAvg(av);
+            }
+
+            for(int i=0; i<nextArray.length; i++)
+            {
+                    nextArray[i].showAll();
+            }
+    }
 }// end class StudentArray
 
 
