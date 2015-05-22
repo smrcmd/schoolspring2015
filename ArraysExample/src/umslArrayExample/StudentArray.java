@@ -32,7 +32,8 @@ public class StudentArray {
                     sarray[i].setID(id);
                     sarray[i].setExam1(ex1);
                     sarray[i].setExam2(ex2);
-                    sarray[i].setAvg(av);
+                    sarray[i].calcAvg();
+                    sarray[i].calcLetterGrade();
             }
 
             for(int i=0; i<sarray.length; i++)
@@ -56,7 +57,8 @@ public class StudentArray {
                     nextArray[i].setID(id);
                     nextArray[i].setExam1(ex1);
                     nextArray[i].setExam2(ex2);
-                    nextArray[i].setAvg(av);
+                    nextArray[i].calcAvg();
+                    nextArray[i].calcLetterGrade();
             }
 
             for(int i=0; i<nextArray.length; i++)
