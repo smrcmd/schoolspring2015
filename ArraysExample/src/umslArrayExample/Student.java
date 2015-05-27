@@ -15,21 +15,28 @@ public class Student
 	private float Exam1;
 	private float Exam2;
         private float Avg;
+        
+        public Student(String s, float ex1, float ex2)
+        {
+            ID = new String(s);
+            Exam1 = ex1;
+            Exam2 = ex2;
+        }
 	
-	public void setID(String s)
-        {
-		ID = new String(s);
-	}
-
-	public void setExam1(float e1)
-        {
-		Exam1 = e1;	
-	}
-	
-	public void setExam2(float e2)
-        {
-		Exam2 = e2;	
-	}
+//	public void setID(String s)
+//        {
+//		ID = new String(s);
+//	}
+//
+//	public void setExam1(float e1)
+//        {
+//		Exam1 = e1;	
+//	}
+//	
+//	public void setExam2(float e2)
+//        {
+//		Exam2 = e2;	
+//	}
 
 	public void showAll()
         {
@@ -44,10 +51,6 @@ public class Student
          public void calcAvg()
         {
             Avg = (Exam1 + Exam2)/2;
-        }
-        
-        public void showGrades()
-        {
         }
         
         public void calcLetterGrade()
