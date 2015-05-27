@@ -38,34 +38,30 @@ public class StudentArray
 			if(input.equalsIgnoreCase("G"))
                         {
                             sarray[i] = new GradStudent();
-                            System.out.println("Please enter the id number [0, 1, 2]: ");
-                            x = sc.nextInt();
+                            assignID();
+
                         }
                         else if(input.equalsIgnoreCase("UG"))
                         {
                             sarray[i] = new Undergrad(); 
-                            System.out.println("Please enter the id number [0, 1, 2]: ");
-                            x = sc.nextInt();
+                            assignID();
                         } 
                         else
                         {
                             sarray[i] = new Student();
-                            System.out.println("Please enter the id number [0, 1, 2]: ");
-                            x = sc.nextInt();
+                            assignID();
                         }
 		}
 
                         System.out.println("Please enter the student account you want to access [0, 1, 2]: ");
-                        x = sc.nextInt();
-//                        
+                        x = sc.nextInt();                       
+
                         if (x<=2)
                         {
                             System.out.print("Enter Exam 1: ");
                             ex1_holdinput = sc.nextFloat();
                             System.out.print("Enter Exam 2: ");
                             ex2_holdinput = sc.nextFloat();
-                            String xx = Integer.toString(x);
-                            sarray[x].setID(xx);
                             sarray[x].setExam1(ex1_holdinput);
                             sarray[x].setExam2(ex2_holdinput);
                             sarray[x].showAll();
@@ -78,6 +74,15 @@ public class StudentArray
                         //sarray[x].
                         //sarray[x].average(); 
                 
+        }
+        
+        public void assignID()
+        {
+            System.out.println("Please enter the id number [0, 1, 2]: ");
+            Scanner sc = new Scanner(System.in);
+            int x = sc.nextInt();
+            String xx = Integer.toString(x);
+            sarray[x].setID(xx);
         }
 	
 }// end class StudentArray	
