@@ -39,36 +39,37 @@ public class ATM {
            aa.selectAccount();
            aa.writeArray();
         }
-        
+
         else 
         {
            aa.readArray();
            aa.selectAccount();
            aa.writeArray();
         }
-     
+        
     }
     
     public void populateArray() throws IOException, NotSerializableException, EOFException, InvalidClassException
     {
-        System.out.println("What kind of account do you wish to create? (C) for Checking (S) for Savings");
-        Scanner sc = new Scanner(System.in);
-        String acctType = sc.nextLine();
-        
-        for(int i=0; i<AcctArray.length; i++)
-            
-            if (acctType.equalsIgnoreCase("C"))
-            {
-                AcctArray[i] = new Checking();
-            }
-            else if (acctType.equalsIgnoreCase("S"))
-            {
-                AcctArray[i] = new Savings();
-            }
-            
+        for(int j=0; j<AcctArray.length; j++)
+        {
+            System.out.println("What kind of account do you wish to create? (C) for Checking (S) for Savings");
+            Scanner sc = new Scanner(System.in);
+            String acctType = sc.nextLine();
+
+            for(int i=0; i<AcctArray.length; i++)
+
+                if (acctType.equalsIgnoreCase("C"))
+                {
+                    AcctArray[i] = new Checking();
+                }
+                else if (acctType.equalsIgnoreCase("S"))
+                {
+                    AcctArray[i] = new Savings();
+                }
+        }
         System.out.println("There are " + AcctArray.length + " accounts available.");
         System.out.println();
-           
     } 
     
     public void readArray() throws EOFException, InvalidClassException

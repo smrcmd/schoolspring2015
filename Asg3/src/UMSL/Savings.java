@@ -20,12 +20,13 @@ public class Savings extends Account{
 //        balance = begin_balance;
 //    } // End Initial Constructor
     
-    public void getInterest() 
+    public double getInterest() 
     {
         int datediff = seconddate - firstdate;
         rate = .10/365;
         double ratetime = Math.pow(1+rate,datediff);
         balance = balance * ratetime;
         firstdate = seconddate;
+        return balance;
     }
 }

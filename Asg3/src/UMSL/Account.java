@@ -15,10 +15,10 @@ import java.text.*;
 
 public abstract class Account
 {
-    private double balance;
-    private int firstdate;
-    private int seconddate;
-    private double rate;
+    protected double balance;
+    protected int firstdate;
+    protected int seconddate;
+    protected double rate;
     private Calendar date1 = new GregorianCalendar();
     private Calendar date2 = new GregorianCalendar();
     private boolean dateflag = false;
@@ -90,12 +90,14 @@ public abstract class Account
                     if (dateflag == true)
                     {
                         getDate2();
+                        System.out.println("You entered" + seconddate);
                         getInterest();
                         deposit();
                     }
                     else
                     {
                         getDate1();
+                        System.out.println("You entered" + firstdate);
                         deposit();
                     }
             }
@@ -221,12 +223,12 @@ public abstract class Account
      }
  // This method calulates the interest based on the previous date and the
  // current date
-    public void getInterest() 
-    {
-        int datediff = seconddate - firstdate;
-        rate = .05/365;
-        double ratetime = Math.pow(1+rate,datediff);
-        balance = balance * ratetime;
-        firstdate = seconddate;
-    }
+    public abstract double getInterest(); 
+//    {
+//        int datediff = seconddate - firstdate;
+//        rate = .05/365;
+//        double ratetime = Math.pow(1+rate,datediff);
+//        balance = balance * ratetime;
+//        firstdate = seconddate;
+//    }
 }
