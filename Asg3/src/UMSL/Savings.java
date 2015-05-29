@@ -10,16 +10,8 @@ package UMSL;
  * @author Sophie
  */
 public class Savings extends Account{
-    private double rate;
-    double balance = getBal();
-    int firstdate = getDateOne();
-    int seconddate = getDateTwo();
-    
-//    public Savings (double begin_balance) 
-//    {
-//        balance = begin_balance;
-//    } // End Initial Constructor
-    
+
+
     public double getInterest() 
     {
         int datediff = seconddate - firstdate;

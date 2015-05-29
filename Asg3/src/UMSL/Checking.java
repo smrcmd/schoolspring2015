@@ -9,17 +9,8 @@ package UMSL;
  *
  * @author Sophie
  */
-public class Checking extends Account{
-//    
-//    private double rate;
-//    double balance = getBal();
-//    int firstdate = getDateOne();
-//    int seconddate = getDateTwo();
-    
-//    public Checking (double begin_balance) 
-//    {
-//        balance = begin_balance;
-//    } // End Initial Constructor
+public class Checking extends Account
+{
     
     @Override
     public double getInterest() 

@@ -14,15 +14,7 @@ import java.io.InputStreamReader;
  * @author Sophie
  */
 public class CD extends Account{
-    private double rate;
-    double balance = getBal();
-    int firstdate = getDateOne();
-    int seconddate = getDateTwo();
-    
-//    public CD (double begin_balance) 
-//    {
-//        balance = begin_balance;
-//    } // End Initial Constructor
+
     
     public double getInterest() 
     {

@@ -13,12 +13,13 @@ import java.text.*;
  * @author Sophie
  */
 
-public abstract class Account
+public abstract class Account implements Serializable
 {
     protected double balance;
     protected int firstdate;
     protected int seconddate;
     protected double rate;
+    protected String ID;
     private Calendar date1 = new GregorianCalendar();
     private Calendar date2 = new GregorianCalendar();
     private boolean dateflag = false;
@@ -39,6 +40,14 @@ public abstract class Account
         balance = begin_balance;
     } // End Initial Constructor
     
+    public void setID(String s)
+    {
+            ID = new String(s);
+    }
+    public String getID()
+        {
+            return ID;
+        }
     
     public double getBal()
     {

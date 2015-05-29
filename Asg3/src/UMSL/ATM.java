@@ -51,22 +51,27 @@ public class ATM {
     
     public void populateArray() throws IOException, NotSerializableException, EOFException, InvalidClassException
     {
-        for(int j=0; j<AcctArray.length; j++)
+        for(int i=0; i<AcctArray.length; i++)
         {
             System.out.println("What kind of account do you wish to create? (C) for Checking (S) for Savings");
             Scanner sc = new Scanner(System.in);
             String acctType = sc.nextLine();
-
-            for(int i=0; i<AcctArray.length; i++)
-
-                if (acctType.equalsIgnoreCase("C"))
-                {
-                    AcctArray[i] = new Checking();
-                }
-                else if (acctType.equalsIgnoreCase("S"))
-                {
-                    AcctArray[i] = new Savings();
-                }
+            
+            if (acctType.equalsIgnoreCase("C"))
+            {
+                AcctArray[i] = new Checking();
+                System.out.println("Please enter your desired account name: ");
+                String local_id = sc.next();
+                AcctArray[i].setID(local_id);
+            }
+            else if (acctType.equalsIgnoreCase("S"))
+            {
+                AcctArray[i] = new Savings();
+                System.out.println("Please enter your desired account name: ");
+                String local_id = sc.next();
+                AcctArray[i].setID(local_id);
+            }
+            
         }
         System.out.println("There are " + AcctArray.length + " accounts available.");
         System.out.println();
@@ -86,7 +91,7 @@ public class ATM {
         {
             System.err.println(e);
         }
-        System.out.println(AcctArray.length + " arrays to choose from.");
+        System.out.println(AcctArray.length + " accountss to choose from.");
     }
 
     public void writeArray() throws ArrayIndexOutOfBoundsException
@@ -113,18 +118,25 @@ public class ATM {
      */
     public void selectAccount() throws ArrayIndexOutOfBoundsException
     {
-        int input = 0;
         try
         {
-            while (input == 0 || input == 1 || input == 2)
-            {
-            System.out.println("Please enter the account you wish to access (0,1,2) and -99 to exit:" );
-            Scanner select = new Scanner(System.in);
-            input = select.nextInt();
+            Scanner sc = new Scanner(System.in);
+
+                System.out.println("Please enter your Account Name:");
+                String secondinput = sc.next();
+                int index = -1;
+                for(int i = 0; i < AcctArray.length; i++)
+                {
+
+                    if(AcctArray[i].getID().equalsIgnoreCase(secondinput))
+                    {
+                        index = i;
+                    }
+                }
             Account menu; //call menu from AcctArray
-            AcctArray[input].menu();
-            }
+            AcctArray[index].menu();
         }
+        
         catch (Throwable o)
             {
                 System.exit(0);
