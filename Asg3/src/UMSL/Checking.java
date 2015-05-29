@@ -24,7 +24,7 @@ public class Checking extends Account{
     public void getInterest() 
     {
         int datediff = seconddate - firstdate;
-        rate = .05/365;
+        rate = .01/365;
         double ratetime = Math.pow(1+rate,datediff);
         balance = balance * ratetime;
         firstdate = seconddate;

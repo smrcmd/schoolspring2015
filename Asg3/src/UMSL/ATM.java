@@ -36,7 +36,6 @@ public class ATM {
         if(answer.equalsIgnoreCase("yes"))
         {
            aa.populateArray();
-           //aa.readArray();
            aa.selectAccount();
            aa.writeArray();
         }
@@ -47,46 +46,29 @@ public class ATM {
            aa.selectAccount();
            aa.writeArray();
         }
-      
-//        System.out.println("Do you wish to make another transaction? 'yes' or 'no'");
-//        Scanner response2 = new Scanner(System.in);
-//        String answer2 = response2.nextLine();
-//        
-//        while(answer2.equalsIgnoreCase("yes"))
-//        {
-//           aa.readArray();
-//           aa.selectAccount();
-//           aa.writeArray();
-//        }
-        //menu.Asg2Menu(balance); 
+     
     }
     
     public void populateArray() throws IOException, NotSerializableException, EOFException, InvalidClassException
     {
+        System.out.println("What kind of account do you wish to create? (C) for Checking (S) for Savings");
+        Scanner sc = new Scanner(System.in);
+        String acctType = sc.nextLine();
+        
         for(int i=0; i<AcctArray.length; i++)
+            
+            if (acctType.equalsIgnoreCase("C"))
             {
-                    AcctArray[i] = new Account();	
-                    //AcctArray[i].setBalance(100);
+                AcctArray[i] = new Checking();
+            }
+            else if (acctType.equalsIgnoreCase("S"))
+            {
+                AcctArray[i] = new Savings();
             }
             
-            System.out.println("There are " + AcctArray.length + " accounts available.");
-            System.out.println();
-            
-//            try
-//            {
-//                OutputStream fout = new FileOutputStream("file.out");
-//                OutputStream buffer = new BufferedOutputStream(fout);
-//                ObjectOutputStream oout = new ObjectOutputStream(buffer);
-//                oout.writeObject(AcctArray);
-//                oout.flush();
-//                fout.close();
-//                System.out.println("Populate array has written to a file.");
-//                
-//            }
-//            catch (Throwable f)
-//            {
-//                System.err.println(f);
-//            }
+        System.out.println("There are " + AcctArray.length + " accounts available.");
+        System.out.println();
+           
     } 
     
     public void readArray() throws EOFException, InvalidClassException
@@ -129,22 +111,22 @@ public class ATM {
      * @return
      */
     public void selectAccount() throws ArrayIndexOutOfBoundsException
+    {
+        int input = 0;
+        try
         {
-            int input = 0;
-            try
+            while (input == 0 || input == 1 || input == 2)
             {
-                while (input == 0 || input == 1 || input == 2)
-                {
-                System.out.println("Please enter the account you wish to access (0,1,2) and -99 to exit:" );
-                Scanner select = new Scanner(System.in);
-                input = select.nextInt();
-                Account menu = new Account(); //call Asg2Menu from AccountArray
-                AcctArray[input].menu();
-                }
+            System.out.println("Please enter the account you wish to access (0,1,2) and -99 to exit:" );
+            Scanner select = new Scanner(System.in);
+            input = select.nextInt();
+            Account menu; //call menu from AcctArray
+            AcctArray[input].menu();
             }
-            catch (Throwable o)
-                {
-                    System.exit(0);
-                }
         }
+        catch (Throwable o)
+            {
+                System.exit(0);
+            }
+    }
 }

@@ -13,7 +13,7 @@ import java.text.*;
  * @author Sophie
  */
 
-public class Account
+public abstract class Account
 {
     private double balance;
     private int firstdate;
@@ -64,7 +64,7 @@ public class Account
             System.out.println();
             System.out.println();
             System.out.println("*********************************");
-            System.out.println("*    WELCOME TO RIPUOFF BANK    *");
+            System.out.println("*    WELCOME TO SOPHIE'S BANK   *");
             System.out.println("*                               *");
             System.out.println("*     Come in and check out     *");
             System.out.println("*          our low 30%          *");
@@ -110,8 +110,8 @@ public class Account
                 }
                 else
                 {
-                        getDate1();
-                        withdraw();
+                    getDate1();
+                    withdraw();
                 }
             }
 
@@ -124,12 +124,12 @@ public class Account
      //Main method instantiates the initial account balance of 100 hundred dollars
      //Then creates the account and lets the Account class take over from there.
 
-    public static void main(String[] args) throws IOException
-    {
-        double init_amount = 100.00;
-        Account firstacct = new Account(init_amount);
-        firstacct.menu();
-    }
+//    public static void main(String[] args) throws IOException
+//    {
+//        double init_amount = 100.00;
+//        Account firstacct = new Account(init_amount);
+//        firstacct.menu();
+//    }
 
      // This method retrieves the balance field and returns it in currency format
     public String getBalance()
