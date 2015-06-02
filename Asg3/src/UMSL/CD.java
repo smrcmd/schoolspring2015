@@ -16,6 +16,7 @@ import java.io.InputStreamReader;
 public class CD extends Account{
 
     
+    @Override
     public double getInterest() 
     {
         int datediff = seconddate - firstdate;
@@ -26,6 +27,7 @@ public class CD extends Account{
         return balance;
     }
     
+    @Override
     public void deposit() throws IOException 
     {
         int depositCount = 0;
@@ -47,6 +49,7 @@ public class CD extends Account{
         }
     }
     
+    @Override
     public void withdraw() throws IOException 
     {
         BufferedReader br;
