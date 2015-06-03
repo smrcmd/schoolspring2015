@@ -12,7 +12,7 @@ import java.text.NumberFormat;
  *
  * @author lawtonb
  */
-public class Student
+public abstract class Student
 {
 	private	String ID;
 	private float Exam1;
@@ -39,17 +39,25 @@ public class Student
             counter++;
         }
         
-	public void setID(String s){
+	public void setID(String s)
+        {
 		ID = new String(s);
 	}
 
-	public void setExam1(float e1){
+	public void setExam1(float e1)
+        {
 		Exam1 = e1;	
 	}
 	
-	public void setExam2(float e2){
+	public void setExam2(float e2)
+        {
 		Exam2 = e2;	
 	}
+        
+        public String getID()
+        {
+            return ID;
+        }
 	
 	public void showAll(){
 		System.out.println();
@@ -76,45 +84,45 @@ public class Student
         }
        
         
-        protected char calcLetterGrade(double input)
-        {
-            //int  sumA, sumB, sumC, sumD, sumF;
-            //sumA=sumB=sumC=sumD=sumF=0;
-            char letterGrade;
-            //while(input != -99){
-
-            if(input>=90){
-                //sumA++;
-                //System.out.println(input + "      A");
-                letterGrade = 'A';
-	    }
-            else if(input >= 70){
-                //sumB++;
-                //System.out.println(input + "      B");
-                letterGrade = 'B';
-            }
-            else if(input >= 50){
-                //sumC++;
-                //System.out.println(input + "      C");
-                letterGrade = 'C';
-            }
-            else if(input >= 35){
-                //sumD++;
-                //System.out.println(input + "      D");
-                letterGrade = 'D';
-            }
-            else{
-                //sumF++;
-                //System.out.println(input + "      F");
-                letterGrade = 'F';
-            }
+        protected abstract char calcLetterGrade(double input);
+//        {
+//            //int  sumA, sumB, sumC, sumD, sumF;
+//            //sumA=sumB=sumC=sumD=sumF=0;
+//            char letterGrade;
+//            //while(input != -99){
+//
+//            if(input>=90){
+//                //sumA++;
+//                //System.out.println(input + "      A");
+//                letterGrade = 'A';
+//	    }
+//            else if(input >= 70){
+//                //sumB++;
+//                //System.out.println(input + "      B");
+//                letterGrade = 'B';
+//            }
+//            else if(input >= 50){
+//                //sumC++;
+//                //System.out.println(input + "      C");
+//                letterGrade = 'C';
+//            }
+//            else if(input >= 35){
+//                //sumD++;
+//                //System.out.println(input + "      D");
+//                letterGrade = 'D';
+//            }
+//            else{
+//                //sumF++;
+//                //System.out.println(input + "      F");
+//                letterGrade = 'F';
+//            }
 
             //input = kbd.readInt();
         //}
-        
-
-            return letterGrade;
-        } 
+//        
+//
+//            return letterGrade;
+//        } 
 
  }
         
