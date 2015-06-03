@@ -28,6 +28,37 @@ public class ATM {
     public static void main(String args[]) throws IOException, NotSerializableException, EOFException
     {
         ATM aa = new ATM();
+        aa.topMenu();
+//        String input = "yes";
+//        while (input.equalsIgnoreCase("yes"))
+//        {
+//        System.out.println("Is this your first time banking with Sophie Bank? 'yes' or 'no':");
+//        Scanner response = new Scanner(System.in);
+//        String answer = response.nextLine();
+//
+//        if(answer.equalsIgnoreCase("yes"))
+//        {
+//           aa.populateArray();
+//           aa.selectAccount();
+//           
+//        }
+//
+//        else 
+//        {
+//           aa.readArray();
+//           aa.selectAccount();
+//        }
+//        
+//        System.out.println("Would you like another transaction?");
+//        Scanner sc = new Scanner(System.in);
+//        input = sc.nextLine();
+//        }
+        
+        aa.writeArray();
+    }
+    
+    public void topMenu() throws IOException, NotSerializableException, EOFException
+    {
         String input = "yes";
         while (input.equalsIgnoreCase("yes"))
         {
@@ -37,23 +68,21 @@ public class ATM {
 
         if(answer.equalsIgnoreCase("yes"))
         {
-           aa.populateArray();
-           aa.selectAccount();
+           populateArray();
+           selectAccount();
            
         }
 
         else 
         {
-           aa.readArray();
-           aa.selectAccount();
+           readArray();
+           selectAccount();
         }
         
         System.out.println("Would you like another transaction?");
         Scanner sc = new Scanner(System.in);
         input = sc.nextLine();
         }
-        
-        aa.writeArray();
     }
     
     public void populateArray() throws IOException, NotSerializableException, EOFException, InvalidClassException
@@ -84,7 +113,7 @@ public class ATM {
         System.out.println();
     } 
     
-    public void readArray() throws EOFException, InvalidClassException
+    public void readArray() throws EOFException, InvalidClassException, IOException
     {
         try
         {
@@ -96,12 +125,13 @@ public class ATM {
         }
         catch (Throwable e)
         {
-            System.err.println(e);
+            System.err.println("Your information was not found." + e);
+            topMenu();
         }
         System.out.println(AcctArray.length + " accounts to choose from.");
     }
 
-    public void writeArray() throws ArrayIndexOutOfBoundsException
+    public void writeArray() throws ArrayIndexOutOfBoundsException, IOException
     {
             try
             {
@@ -117,6 +147,8 @@ public class ATM {
             catch (Throwable g)
             {
                 System.err.println(g);
+                System.err.println("There was an issue writing to your account.");
+                topMenu();
             }
     }
     /**
@@ -144,10 +176,7 @@ public class ATM {
                 }
             Account menu; //call menu from AcctArray
             AcctArray[index].menu();
-            
-                
         }
-       
         
         catch (Throwable o)
             {
