@@ -28,7 +28,9 @@ public class ATM {
     public static void main(String args[]) throws IOException, NotSerializableException, EOFException
     {
         ATM aa = new ATM();
-        
+        String input = "yes";
+        while (input.equalsIgnoreCase("yes"))
+        {
         System.out.println("Is this your first time banking with Sophie Bank? 'yes' or 'no':");
         Scanner response = new Scanner(System.in);
         String answer = response.nextLine();
@@ -37,16 +39,21 @@ public class ATM {
         {
            aa.populateArray();
            aa.selectAccount();
-           aa.writeArray();
+           
         }
 
         else 
         {
            aa.readArray();
            aa.selectAccount();
-           aa.writeArray();
         }
         
+        System.out.println("Would you like another transaction?");
+        Scanner sc = new Scanner(System.in);
+        input = sc.nextLine();
+        }
+        
+        aa.writeArray();
     }
     
     public void populateArray() throws IOException, NotSerializableException, EOFException, InvalidClassException
@@ -91,7 +98,7 @@ public class ATM {
         {
             System.err.println(e);
         }
-        System.out.println(AcctArray.length + " accountss to choose from.");
+        System.out.println(AcctArray.length + " accounts to choose from.");
     }
 
     public void writeArray() throws ArrayIndexOutOfBoundsException
@@ -121,9 +128,11 @@ public class ATM {
         try
         {
             Scanner sc = new Scanner(System.in);
-
-                System.out.println("Please enter your Account Name:");
+                
+                System.out.println("Please enter your Account Name, 'Exit' to exit:");
                 String secondinput = sc.next();
+                
+                
                 int index = -1;
                 for(int i = 0; i < AcctArray.length; i++)
                 {
@@ -135,7 +144,10 @@ public class ATM {
                 }
             Account menu; //call menu from AcctArray
             AcctArray[index].menu();
+            
+                
         }
+       
         
         catch (Throwable o)
             {

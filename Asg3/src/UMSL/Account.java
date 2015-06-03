@@ -66,8 +66,8 @@ public abstract class Account implements Serializable
 
     public void menu() throws IOException
     {
-                    char mychar = 'z';
-      while (mychar != 'e')
+        char mychar = 'z';
+        while (mychar != 'e')
         {
             System.out.println();
             System.out.println();
@@ -86,6 +86,7 @@ public abstract class Account implements Serializable
             System.out.println("Withdraw(w)");
             System.out.println("CheckBalance(c)");
             System.out.println("Exit(e)");
+            
             BufferedReader br;
             String input;
             int index = 0;
@@ -110,7 +111,7 @@ public abstract class Account implements Serializable
                         deposit();
                     }
             }
-            else if (mychar == 'w') 
+            else if (mychar == 'w' || mychar == 'W') 
             {
                 System.out.println("Your current balance is: " + getBalance());
                 if (dateflag == true)
@@ -126,11 +127,15 @@ public abstract class Account implements Serializable
                 }
             }
 
-            else if (mychar == 'c')
+            else if (mychar == 'c' || mychar == 'C')
             {
             System.out.println("Your current balance is: " + getBalance());
             }
-        }
+            else 
+            {
+            
+            }
+        } 
     }
      //Main method instantiates the initial account balance of 100 hundred dollars
      //Then creates the account and lets the Account class take over from there.
