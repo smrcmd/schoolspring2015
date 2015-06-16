@@ -29,30 +29,6 @@ public class ATM {
     {
         ATM aa = new ATM();
         aa.topMenu();
-//        String input = "yes";
-//        while (input.equalsIgnoreCase("yes"))
-//        {
-//        System.out.println("Is this your first time banking with Sophie Bank? 'yes' or 'no':");
-//        Scanner response = new Scanner(System.in);
-//        String answer = response.nextLine();
-//
-//        if(answer.equalsIgnoreCase("yes"))
-//        {
-//           aa.populateArray();
-//           aa.selectAccount();
-//           
-//        }
-//
-//        else 
-//        {
-//           aa.readArray();
-//           aa.selectAccount();
-//        }
-//        
-//        System.out.println("Would you like another transaction?");
-//        Scanner sc = new Scanner(System.in);
-//        input = sc.nextLine();
-//        }
         
         aa.writeArray();
     }
